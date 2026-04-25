@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="pt" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calma Calma — Restaurante · Setúbal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="scrollProgress"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <div class="notification" id="notification">
+      <strong>Reserva Confirmada ✓</strong>
+      Entraremos em contacto brevemente.
+    </div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+      <a href="#hero" class="nav-logo">
+        <img
+          src="calma_calma_logo.png"
+          alt="Calma Calma"
+          class="nav-logo-img"
+        />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#criticas">Críticas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-right">
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Alternar tema"
+        >
+          <svg
+            class="toggle-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+            />
+          </svg>
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <svg
+            class="toggle-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+        <button
+          class="nav-cta"
+          onclick="
+            document
+              .getElementById('reservas')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          Reservar Mesa
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <button
+        class="mobile-nav-close"
+        id="mobileNavClose"
+        aria-label="Fechar menu"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <ul class="mobile-nav-links">
+        <li><a href="#sobre" class="mobile-nav-link">Sobre</a></li>
+        <li><a href="#menu" class="mobile-nav-link">Menu</a></li>
+        <li><a href="#galeria" class="mobile-nav-link">Galeria</a></li>
+        <li><a href="#criticas" class="mobile-nav-link">Críticas</a></li>
+        <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
+      </ul>
+      <div class="mobile-theme-row" id="mobileThemeRow">
+        <svg
+          class="mobile-theme-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+          />
+        </svg>
+        <button
+          class="mobile-toggle-btn"
+          id="mobileThemeToggle"
+          aria-label="Alternar tema"
+        >
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </button>
+        <svg
+          class="mobile-theme-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </div>
+      <button
+        class="mobile-nav-cta"
+        onclick="
+          document
+            .getElementById('reservas')
+            .scrollIntoView({ behavior: 'smooth' });
+          closeMobileNav();
+        "
+      >
+        Reservar Mesa
+      </button>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-media">
+        <img
+          src="img/g05.jpg"
+          alt="Calma Calma esplanada"
+          class="hero-bg-img"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <img src="calma_calma_logo.png" alt="Calma Calma" class="hero-logo" />
+        <p class="hero-tag">Setúbal, Portugal</p>
+        <h1 class="hero-title">Pasta fresca,<br /><em>sabores genuínos</em></h1>
+        <p class="hero-subtitle">
+          Cozinha italiana de alma, feita com ingredientes sazonais<br />
+          dos pequenos produtores da região. Bem-vindos ao Calma Calma.
+        </p>
+        <div class="hero-actions">
+          <a href="#reservas" class="btn-primary">Reservar Mesa</a>
+          <a href="#menu" class="btn-ghost">Ver Menu</a>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span class="scroll-line"></span>
+        Scroll
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="sobre-text" data-reveal="left">
+        <p class="section-label">A Nossa História</p>
+        <h2 class="section-title">Requinte<br /><em>Calma Calma</em></h2>
+        <p>
+          No Calma Calma, a pasta fresca é preparada todos os dias — com
+          farinha, ovos e muita calma. O Chef Sébastien e a equipa combinam
+          técnica italiana com os melhores produtos locais de Setúbal e do
+          Palmela.
+        </p>
+        <p style="margin-top: 16px">
+          Mais do que um restaurante, somos uma galeria de arte em rotação
+          mensal. Um espaço para desacelerar, saborear e estar. Abertos ao
+          mundo.
+        </p>
+      </div>
+      <div class="sobre-right" data-reveal="right">
+        <div class="sobre-photo">
+          <img src="img/g04.jpg" alt="Interior Calma Calma" class="sobre-img" />
+        </div>
+        <div class="sobre-stats">
+          <div class="stat" data-reveal="up" data-delay="1">
+            <div class="stat-num" data-target="4.9">0</div>
+            <div class="stat-label">Avaliação Google</div>
+          </div>
+          <div class="stat" data-reveal="up" data-delay="2">
+            <div class="stat-num" data-target="161" data-suffix="+">0</div>
+            <div class="stat-label">Avaliações</div>
+          </div>
+          <div class="stat" data-reveal="up" data-delay="3">
+            <div class="stat-num" data-target="40">0</div>
+            <div class="stat-label">Lugares Interior</div>
+          </div>
+          <div class="stat" data-reveal="up" data-delay="4">
+            <div class="stat-num" data-target="50">0</div>
+            <div class="stat-label">Lugares Esplanada</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu">
+      <div class="menu-header" data-reveal="up">
+        <div>
+          <p class="section-label">Carta</p>
+          <h2 class="section-title">O nosso<br /><em>Menu</em></h2>
+        </div>
+        <div class="menu-categories">
+          <button
+            class="menu-cat active"
+            onclick="filterMenu('entradas', this)"
+          >
+            Entradas
+          </button>
+          <button class="menu-cat" onclick="filterMenu('principais', this)">
+            Principais
+          </button>
+          <button class="menu-cat" onclick="filterMenu('sobremesas', this)">
+            Sobremesas
+          </button>
+          <select class="menu-cat-select" onchange="filterMenuSelect(this)">
+            <option value="entradas">Entradas</option>
+            <option value="principais">Principais</option>
+            <option value="sobremesas">Sobremesas</option>
+          </select>
+        </div>
+      </div>
+      <div class="menu-grid" id="menuGrid" data-reveal="up">
+        <!-- Entradas -->
+        <div class="menu-item" data-cat="entradas">
+          <div class="menu-item-num">01</div>
+          <h3 class="menu-item-name">Bruschetta Ricotta e Courgette</h3>
+          <p class="menu-item-desc">
+            Pão artesanal, ricotta fresca, courgette salteada e azeite da
+            região.
+          </p>
+          <div class="menu-item-price">€ 9</div>
+        </div>
+        <div class="menu-item" data-cat="entradas">
+          <div class="menu-item-num">02</div>
+          <h3 class="menu-item-name">Steak Tartare</h3>
+          <p class="menu-item-desc">
+            Novilho cortado na faca, mostarda, alcaparras e maionese de trufa.
+          </p>
+          <div class="menu-item-price">€ 16</div>
+        </div>
+        <div class="menu-item" data-cat="entradas">
+          <div class="menu-item-num">03</div>
+          <h3 class="menu-item-name">Fritto Misto</h3>
+          <p class="menu-item-desc">
+            Mistura frita de legumes sazonais e peixe do dia, com aioli de
+            limão.
+          </p>
+          <div class="menu-item-price">€ 14</div>
+        </div>
+        <!-- Principais -->
+        <div class="menu-item menu-hidden" data-cat="principais">
+          <div class="menu-item-num">01</div>
+          <h3 class="menu-item-name">Pasta Fresca do Dia</h3>
+          <p class="menu-item-desc">
+            Feita de manhã, com o molho que o Chef inspirado de hoje escolher.
+          </p>
+          <div class="menu-item-price">€ 18</div>
+        </div>
+        <div class="menu-item menu-hidden" data-cat="principais">
+          <div class="menu-item-num">02</div>
+          <h3 class="menu-item-name">Risotto de Camarão</h3>
+          <p class="menu-item-desc">
+            Arroz arbóreo, camarão do estuário, ovas e caviar de Setúbal.
+          </p>
+          <div class="menu-item-price">€ 24</div>
+        </div>
+        <div class="menu-item menu-hidden" data-cat="principais">
+          <div class="menu-item-num">03</div>
+          <h3 class="menu-item-name">Cordeiro com Gremolata</h3>
+          <p class="menu-item-desc">
+            Borrego alentejano assado lentamente, puré de couve-flor e
+            gremolata.
+          </p>
+          <div class="menu-item-price">€ 28</div>
+        </div>
+        <!-- Sobremesas -->
+        <div class="menu-item menu-hidden" data-cat="sobremesas">
+          <div class="menu-item-num">01</div>
+          <h3 class="menu-item-name">Tiramisu della Casa</h3>
+          <p class="menu-item-desc">
+            Receita original com mascarpone artesanal e café espresso do bar.
+          </p>
+          <div class="menu-item-price">€ 8</div>
+        </div>
+        <div class="menu-item menu-hidden" data-cat="sobremesas">
+          <div class="menu-item-num">02</div>
+          <h3 class="menu-item-name">Panna Cotta de Baunilha</h3>
+          <p class="menu-item-desc">
+            Com coulis de frutos vermelhos da época e azeite de limão.
+          </p>
+          <div class="menu-item-price">€ 7</div>
+        </div>
+        <div class="menu-item menu-hidden" data-cat="sobremesas">
+          <div class="menu-item-num">03</div>
+          <h3 class="menu-item-name">Queijos Regionais</h3>
+          <p class="menu-item-desc">
+            Seleção de queijos DOP com mel de urze e compota de figo.
+          </p>
+          <div class="menu-item-price">€ 12</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOTO STRIP -->
+    <div class="foto-strip" data-reveal="up">
+      <div class="foto-strip-item">
+        <img src="img/g07.jpg" alt="Bruschetta" />
+      </div>
+      <div class="foto-strip-item">
+        <img src="img/foto2.jpg" alt="Pasta" />
+      </div>
+      <div class="foto-strip-item">
+        <img src="img/g08.jpg" alt="Risotto" />
+      </div>
+      <div class="foto-strip-item">
+        <img src="img/g11.jpg" alt="Mesa" />
+      </div>
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Pasta Fresca</span><span class="marquee-dot">·</span>
+        <span>Setúbal</span><span class="marquee-dot">·</span>
+        <span>Cozinha Italiana</span><span class="marquee-dot">·</span>
+        <span>Ingredientes Sazonais</span><span class="marquee-dot">·</span>
+        <span>Aberto Quarta a Domingo</span><span class="marquee-dot">·</span>
+        <span>Arte em Rotação</span><span class="marquee-dot">·</span>
+        <span>Pasta Fresca</span><span class="marquee-dot">·</span>
+        <span>Setúbal</span><span class="marquee-dot">·</span>
+        <span>Cozinha Italiana</span><span class="marquee-dot">·</span>
+        <span>Ingredientes Sazonais</span><span class="marquee-dot">·</span>
+        <span>Aberto Quarta a Domingo</span><span class="marquee-dot">·</span>
+        <span>Arte em Rotação</span><span class="marquee-dot">·</span>
+      </div>
+    </div>
+
+    <!-- GALERIA -->
+    <section id="galeria">
+      <div class="gallery-intro" data-reveal="up">
+        <div>
+          <p class="section-label">Galeria</p>
+          <h2 class="section-title">O nosso<br /><em>espaço</em></h2>
+        </div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-reveal="scale" data-delay="1">
+          <img
+            src="img/g05.jpg"
+            alt="Esplanada noturna"
+            class="gallery-real-img"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Esplanada · Noite</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-reveal="scale" data-delay="2">
+          <img
+            src="img/g02.jpg"
+            alt="Entrada Calma Calma"
+            class="gallery-real-img"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Entrada</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-reveal="scale" data-delay="3">
+          <img src="img/g04.jpg" alt="Interior" class="gallery-real-img" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Sala · Arte</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-reveal="scale" data-delay="4">
+          <img src="img/g01.jpg" alt="Bar interior" class="gallery-real-img" />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Bar</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-reveal="scale" data-delay="5">
+          <img
+            src="img/g10.jpg"
+            alt="Cozinha aberta"
+            class="gallery-real-img"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Cozinha Aberta</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRÍTICAS -->
+    <section id="criticas">
+      <div class="criticas-header" data-reveal="up">
+        <p class="section-label">Críticas</p>
+        <h2 class="section-title">O que dizem<br />de <em>nós</em></h2>
+      </div>
+      <div class="criticas-grid">
+        <div class="critica-card" data-reveal="up" data-delay="1">
+          <div class="critica-stars">★★★★★</div>
+          <p class="critica-text">
+            "We ate there twice — once dining-in and the second time to
+            take-away — and on both occasions the food was extremely good. The
+            manageress was a force of nature, great fun and really chatty.
+            Really lovely young couple who deserve to have every success with
+            this fantastic restaurant."
+          </p>
+          <div class="critica-author">
+            <span class="critica-name">Rick M.</span>
+            <span class="critica-source">TripAdvisor · Março 2026</span>
+          </div>
+        </div>
+        <div class="critica-card" data-reveal="up" data-delay="2">
+          <div class="critica-stars">★★★★★</div>
+          <p class="critica-text">
+            "Super atenciosos, excelente comida. Serviço 5 estrelas, comida 5
+            estrelas, ambiente 5 estrelas. Um restaurante que merece todo o
+            sucesso."
+          </p>
+          <div class="critica-author">
+            <span class="critica-name">Carlos Silva</span>
+            <span class="critica-source">Restaurant Guru · 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="rating-badge" data-reveal="up">
+        <span class="rating-num">4.9</span>
+        <div>
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-label">161+ avaliaçõess</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVAS -->
+    <section id="reservas">
+      <div class="reservas-layout">
+        <div class="reservas-info" data-reveal="left">
+          <p class="section-label">Marcações</p>
+          <h2 class="section-title">Reserve a<br />sua <em>mesa</em></h2>
+          <p>
+            Aceitamos reservas com até 30 dias de antecedência. Para grupos com
+            mais de 8 pessoas, contacte-nos por telefone.
+          </p>
+          <div class="reservas-details">
+            <div class="detail-row">
+              <span class="detail-icon">🕐</span>
+              Quarta a Dom — 12h30–14h30 · 19h00–23h00
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">📞</span>
+              +351 938 102 159
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">✉️</span>
+              reservas@calmacalma.pt
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">👥</span>
+              Capacidade máxima: 40 pessoas
+            </div>
+          </div>
+        </div>
+        <div data-reveal="right">
+          <div id="reservaForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" id="nome" placeholder="João Silva" />
+              </div>
+              <div class="form-group">
+                <label>Contacto</label>
+                <input type="tel" id="tel" placeholder="+351 9XX XXX XXX" />
+              </div>
+              <div class="form-group">
+                <label>Data</label>
+                <input type="date" id="data" />
+              </div>
+              <div class="form-group">
+                <label>Hora</label>
+                <select id="hora">
+                  <option value="">Selecionar</option>
+                  <option>12h30</option>
+                  <option>13h00</option>
+                  <option>13h30</option>
+                  <option>19h00</option>
+                  <option>19h30</option>
+                  <option>20h00</option>
+                  <option>20h30</option>
+                  <option>21h00</option>
+                  <option>21h30</option>
+                  <option>22h00</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Número de Pessoas</label>
+                <select id="pessoas">
+                  <option value="">Selecionar</option>
+                  <option>1 pessoa</option>
+                  <option>2 pessoas</option>
+                  <option>3 pessoas</option>
+                  <option>4 pessoas</option>
+                  <option>5 pessoas</option>
+                  <option>6 pessoas</option>
+                  <option>7 pessoas</option>
+                  <option>8 pessoas</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Ocasião Especial</label>
+                <select id="ocasiao">
+                  <option value="">Nenhuma</option>
+                  <option>Aniversário</option>
+                  <option>Aniversário de Casamento</option>
+                  <option>Negócios</option>
+                  <option>Pedido de Namoro</option>
+                  <option>Outra</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label>Notas ou Pedidos Especiais</label>
+                <textarea
+                  id="notas"
+                  placeholder="Alergias, preferências alimentares, pedidos especiais..."
+                ></textarea>
+              </div>
+            </div>
+            <button class="form-submit" onclick="submitReserva()">
+              Confirmar Reserva
+            </button>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">✓</div>
+            <h3>Reserva Recebida</h3>
+            <p>
+              Obrigado pela sua reserva. Entraremos em contacto nas próximas 2
+              horas para confirmar a sua mesa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="reservas-photo" data-reveal="up">
+      <img src="img/g09.jpg" alt="Calma Calma interior" />
+    </div>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="contact-info" data-reveal="left">
+        <p class="section-label">Localização</p>
+        <h2 class="section-title">Onde<br /><em>estamos</em></h2>
+        <div class="contact-item">
+          <div class="contact-item-label">Endereço</div>
+          <div class="contact-item-value">
+            R. Antão Girão 44<br />2900-475 Setúbal
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">Horário</div>
+          <div class="contact-item-value">
+            Quarta a Domingo<br />12h30–14h30 · 19h00–23h00
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">Contacto Direto</div>
+          <div class="contact-item-value">
+            +351 938 102 159<br />reservas@calmacalma.pt
+          </div>
+        </div>
+        <div class="social-links">
+          <a
+            href="https://www.instagram.com/calmacalma.restaurante/"
+            target="_blank"
+            class="social-link"
+            title="Instagram"
+            >📸</a
+          >
+          <a
+            href="https://www.google.com/maps/place/Calma+Calma/@38.5243938,-8.8916514,17z"
+            target="_blank"
+            class="social-link"
+            title="Google Maps"
+            >⭐</a
+          >
+        </div>
+      </div>
+      <div data-reveal="right">
+        <div class="map-container">
+          <iframe
+            src="https://maps.google.com/maps?q=38.5243938,-8.8890765&z=17&output=embed"
+            width="100%"
+            height="440"
+            style="border: 0; display: block"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+          <a
+            href="https://www.google.com/maps/place/Calma+Calma/@38.5243938,-8.8916514,17z/data=!3m1!4b1!4m6!3m5!1s0xd1943a4d5056993:0xd8c8ea29624f3cf0!8m2!3d38.5243938!4d-8.8890765!16s%2Fg%2F11xkgkjp2m"
+            target="_blank"
+            class="map-btn"
+            >Abrir no Google Maps</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">
+        <img
+          src="calma_calma_logo.png"
+          alt="Calma Calma"
+          class="footer-logo-img"
+        />
+      </div>
+      <ul class="footer-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reservas">Reservas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <p class="footer-copy">
+        © 2025 Calma Calma · Todos os direitos reservados
+      </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
